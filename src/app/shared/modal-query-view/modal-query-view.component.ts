@@ -1,0 +1,151 @@
+import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
+import { QueryViewService } from 'src/app/shared/query-view.service';
+import { AlertService } from 'src/app/shared/alert.service';
+import { ngxCsv } from 'ngx-csv/ngx-csv';
+import * as _ from 'lodash';
+
+@Component({
+  selector: 'app-modal-query-view',
+  templateUrl: './modal-query-view.component.html',
+  styleUrls: ['./modal-query-view.component.scss']
+})
+export class ModalQueryViewComponent implements OnInit {
+
+  @Output('onSave') onSave: EventEmitter<any> = new EventEmitter<any>();
+  itemmenu: any = [];
+  fieldDatas: any = [];
+  items: any = [];
+  tableDatas: any = [];
+  info: any = {};
+  opened: boolean = false;
+  loading: boolean = false;
+
+  sql: any;
+  params: any;
+  subitems: any;
+  param_xx: any;
+  param_x: any = [];
+  param: any = [];
+
+  title_name: any;
+  comment: any;
+  template: any;
+
+
+  constructor(
+    private alertService: AlertService,
+    private queryViewService: QueryViewService,
+  ) { }
+
+  ngOnInit() {
+  }
+
+  async open(info: any = null) {
+    this.opened = true;
+    console.log(info);
+
+    this.sql = info.query_sql
+    this.params = info.query_params
+    this.title_name = info.sub_item_name
+    this.comment = info.comment
+    this.template = info.template
+    if (this.params) {
+      this.param_xx = this.params.split(",");
+      console.log(this.param_xx);
+    }
+  }
+  dismiss() {
+    this.opened = false;
+  }
+
+  KeyParam(xx, input, idx) {
+    console.log(input.value, ':', idx, ':', xx);
+
+    // let param: any;
+    let name: any = xx;
+    let data: any = input.value;
+    let _info = { name, data }
+    // this.param.push(_info)
+    this.param[idx] = { name, data };
+    console.log(this.param);
+
+  }
+
+  async gitShowView() {
+    this.loading = true;
+    let i: any;
+    let x: any;
+    let xx: any;
+    // this.open = false;
+
+    for (i = 0; i < this.param.length; i++) {
+      x = this.param[i].name;
+      xx = this.param[i].data;
+      this.param_x[i] = xx;
+    }
+    this.params = this.param_x;
+    console.log(this.params);
+
+    // this.Dataviews = [];
+
+    try {
+      const rs: any = await this.queryViewService.viewReport(this.sql, this.params);
+      if (rs.info) {
+        // this.items = rs.info;
+        let _info = rs.info;
+        console.log(_info);
+
+        const xx = _info[0].length
+        const _datafield = [];
+        if (_info[1][0] != null) {
+          this.items = _info[0]; // ตอนรับ ก็ต้องมารับค่า rows แบบนี้
+          this.itemmenu = _info[1];
+        } else if (_info[0][3] != null) {
+          this.items = _info[0][3]; // ตอนรับ ก็ต้องมารับค่า rows แบบ ตัวแปร 1 แยกออกหลายจุด
+          this.itemmenu = _info[1][3];
+        } else {
+          this.items = _info[0][2]; // ตอนรับ ก็ต้องมารับค่า rows แบบ ตัวแปร 1 แยกออกหลายจุด
+          this.itemmenu = _info[1][2];
+        }
+        _.forEach(this.itemmenu, (v, k) => {  // ดึงข้อมูล colums ไปเก็บไว้ที่ _datafield
+          _datafield.push(v.name);
+        })
+        this.items.forEach(v => {   // ดึงข้อมูล roows ไปเก็บไว้ที่ _data
+          let _data = [];
+          // tslint:disable-next-line:no-shadowed-variable
+          _.forEach(v, x => {
+            _data.push(x);
+          });
+          this.tableDatas.push(_data);  // ส่งค่า _data ไปเก็บใน this.tableDatas เพื่อไปแสดงหน้า thml
+        });
+        this.fieldDatas = _datafield;  // ส่งค่า _datafield ไปเก็บใน 
+
+        console.log('tableDatas', this.tableDatas);
+        console.log('fieldDatas', this.fieldDatas);
+        this.loading = false;
+
+      } else {
+        this.alertService.error('เกิดข้อผิดพลาด');
+      }
+    } catch (error) {
+      console.log(error);
+      this.alertService.error();
+    }
+
+  }
+  exportToExcel() {
+    const options = {
+      fieldSeparator: ',',
+      quoteStrings: '"',
+      decimalseparator: '.',
+      showLabels: true,
+      showTitle: false,
+      useBom: true,
+      headers: [this.fieldDatas]
+    };
+    // tslint:disable-next-line:no-unused-expression
+    new ngxCsv(this.items, this.title_name, options);
+    // this.excelService.exportAsExcelFile(excelDatas, this.tableName);
+  }
+
+}

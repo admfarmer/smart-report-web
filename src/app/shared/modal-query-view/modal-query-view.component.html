@@ -1,0 +1,157 @@
+<clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false" [clrModalSize]="'xl'">
+  <h3 class="modal-title">{{title_name}}</h3>
+  <div class="modal-body">
+    <section class="form-block  " *ngIf="params !== null">
+      <div class="modal-body  ">
+        <form class="form-group  ">
+
+          <div class="row ">
+            <div class=" font-weight-bold col-md-5"><u>
+                <h4>
+                  <clr-icon shape="event"></clr-icon>ค้นหาข้อมูลตามเงื่อนไข
+                </h4>
+              </u></div>
+            <div class="col-md-7 alert alert-warning">
+              <clr-icon shape="pinboard"></clr-icon>หมายเหตุ : {{ comment }}
+            </div>
+
+          </div>
+
+          <hr>
+          <section class="form-block" *ngFor="let xx of param_xx; let idx = index;">
+            <div class="clr-form-control">
+              <label for="aForm_2" class="clr-control-label">{{ xx }}</label>
+              <div *ngIf="xx == 'datestart' || xx == 'dateend'">
+                <input type="date" name="{{xx}}" id="{{xx}}" size="35" value="" #input (input)="KeyParam(xx,input,idx)"
+                  class="clr-input">
+              </div>
+              <!-- <div class="select" *ngIf="xx == 'ampur'">
+                <select name="xx" id="xx" #input (input)="Paramampur(xx,input,idx,param_xx)">
+                  <option [value]="''">---- เลือกอำเภอ ----</option>
+                  <option [value]="am.amppart" *ngFor="let am of ampur">{{am.nameampur}}</option>
+                </select>
+              </div>
+
+              <div class="select" *ngIf="xx == 'cln'">
+                <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
+                  <option [value]="''">---- เลือกคลีนิค ----</option>
+                  <option [value]="cn.cln" *ngFor="let cn of cln">{{cn.namecln}}</option>
+                </select>
+              </div>
+
+              <div class="select" *ngIf="xx == 'pcu'">
+                <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
+                  <option [value]="''">---- เลือกรพ. ส.ต. ----</option>
+                  <option [value]="hos.hospsub" *ngFor="let hos of pcu ">{{hos.namehosp}}</option>
+                </select>
+              </div>
+
+              <div class="select" *ngIf="xx == 'idpm'">
+                <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
+                  <option [value]="''">---- เลือกตึกผู้ป่วยใน ----</option>
+                  <option [value]="idm.idpm" *ngFor="let idm of idpm ">{{idm.nameidpm}}</option>
+                </select>
+              </div>
+              <div class="select" *ngIf="xx == 'dct'">
+                <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
+                  <option [value]="''">---- เลือกแพทย์----</option>
+                  <option [value]="dctm.lcno" *ngFor="let dctm of dct ">{{dctm.fname}}</option>
+                </select>
+              </div> -->
+              <div class="select" *ngIf="xx == 'month'">
+                <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
+                  <option [value]="''">---- เลือกเดือน ----</option>
+                  <option [value]="'01'">มกราคม</option>
+                  <option [value]="'02'">กุมภาพันธ์</option>
+                  <option [value]="'03'">มีนาคม</option>
+                  <option [value]="'04'">เมษายน</option>
+                  <option [value]="'05'">พฤษภาคม</option>
+                  <option [value]="'06'">มิถุนายน</option>
+                  <option [value]="'07'">กรกฏาคม</option>
+                  <option [value]="'08'">สิงหาคม</option>
+                  <option [value]="'09'">กันยายน</option>
+                  <option [value]="'10'">ตุลาคม</option>
+                  <option [value]="'11'">พฤศจิกายน</option>
+                  <option [value]="'12'">ธันวาคม</option>
+                </select>
+              </div>
+
+              <div class="select" *ngIf="xx == 'yearbudget'">
+                <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
+                  <option [value]="''">---- เลือกปี พ.ศ. ----</option>
+                  <option [value]="'2018'">2561</option>
+                  <option [value]="'2017'">2560</option>
+                  <option [value]="'2016'">2559</option>
+                  <option [value]="'2015'">2558</option>
+                  <option [value]="'2014'">2557</option>
+                  <option [value]="'2013'">2556</option>
+                  <option [value]="'2012'">2555</option>
+                  <option [value]="'2011'">2554</option>
+                </select>
+              </div>
+
+              <div class="select" *ngIf="xx == 'ed'">
+                <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
+                  <option [value]="''">---- เลือกยา----</option>
+                  <option [value]="'1'">ในบัญชี</option>
+                  <option [value]="'0'">นอกบัญชี</option>
+                </select>
+              </div>
+              <!-- <div class="select" *ngIf="xx == 'groupdx'">
+                <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
+                  <option [value]="''">---- เลือกกลุ่มDX----</option>
+                  <option [value]="cgroup2.cgroup" *ngFor="let cgroup2 of groupdx ">{{cgroup2.e_name}}
+                  </option>
+                </select>
+              </div> -->
+              <div *ngIf="xx !== 'datestart' && xx !== 'dateend' && xx !== 'month' && xx !== 'yearbudget' && xx !=='ampur'
+                    && xx !=='cln'  && xx !=='pcu'  && xx !=='idpm'&& xx !=='dct'&& xx !=='ed'&& xx !=='groupdx'">
+                <input type="text" name="xx" id="xx" size="35" value="" #input (keyup)="KeyParam(xx,input,idx)"
+                  class="clr-input">
+                <!-- <input type="text " name="xx " [(ngModel)]="xx " size="35 "> -->
+              </div>
+            </div>
+          </section>
+        </form>
+      </div>
+      <div class="form-group ">
+        <button type="submit" class=" btn btn-primary" (click)="gitShowView()">Ok</button>
+      </div>
+      <hr>
+    </section>
+
+    <section class="form-block">
+      <div class="modal-body">
+        <div class="row">
+          <div class=" font-weight-bold col-md-4"><u>
+              <clr-icon shape="bullseye" class="is-solid"></clr-icon>รายงาน :
+            </u> </div>
+          <div class="col-md-6  font-weight-bold"><u> {{ title_name }}</u>
+          </div>
+          <div class="col-md-1">
+            <section class="form-block " *ngIf="fieldDatas !='' ">
+              <button (click)="exportToExcel() " class="btn btn-warning">ส่งออก excel</button>
+            </section>
+          </div>
+        </div>
+      </div>
+      <clr-datagrid [clrDgLoading]="loading">
+        <clr-dg-column [clrDgField]="'f'" *ngFor="let f of fieldDatas "> {{f}}</clr-dg-column>
+        <clr-dg-placeholder>ไม่พบรายการ</clr-dg-placeholder>
+        <clr-dg-row *clrDgItems="let d of tableDatas ">
+          <clr-dg-cell *ngFor="let x of d; let idx=index; ">
+            {{ x }}
+          </clr-dg-cell>
+        </clr-dg-row>
+        <clr-dg-footer>
+          {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} rows
+          <clr-dg-pagination #pagination [clrDgPageSize]="30"></clr-dg-pagination>
+        </clr-dg-footer>
+      </clr-datagrid>
+    </section>
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-danger" (click)="dismiss()">ปิด</button>
+  </div>
+</clr-modal>

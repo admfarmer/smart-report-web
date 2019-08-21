@@ -1,0 +1,69 @@
+<div class="main-container">
+  <header class="header-6">
+    <div class="branding">
+      <a href="..." class="nav-link">
+        <clr-icon shape="vm-bug"></clr-icon>
+        <span class="title">Smart HIReport System</span>
+      </a>
+    </div>
+    <div class="header-actions">
+      <a class="nav-link" (click)="logout()" href="javascript://">
+        Log Out
+      </a>
+    </div>
+  </header>
+
+  <div class="content-container">
+
+    <div class="content-area">
+      <router-outlet></router-outlet>
+    </div>
+
+    <clr-vertical-nav>
+
+      <li class="nav-item nav-profile">
+        <a href="javascript://" class="nav-link">
+          <div class="nav-profile-image">
+            <!-- <img src="./assets/images/faces/face1.jpg" alt="profile"> -->
+            <span class="login-status online"></span>
+            <!--change to offline or busy as needed-->
+          </div>
+          <div class="nav-profile-text d-flex flex-column">
+            <span class="font-weight-bold mb-2">{{fullname}}</span>
+            <span class="text-secondary text-small"> : His User</span>
+          </div>
+          <i class="mdi mdi-bookmark-check text-success nav-profile-badge"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a clrVerticalNavLink routerLinkActive="active" routerLink="home">
+          <clr-icon shape="home" clrVerticalNavIcon></clr-icon>
+          Home
+        </a>
+      </li>
+
+      <clr-vertical-nav-group routerLinkActive="active">
+        <clr-icon shape="justify-text" clrVerticalNavIcon></clr-icon>
+        รายงานออนไลน์
+        <clr-vertical-nav-group-children *ngFor="let item of items">
+          <a clrVerticalNavLink routerLink="query/{{item.item_id}}" routerLinkActive="active"
+            (click)="openQuery(item.item_id)">
+            {{item.item_name}}
+          </a>
+        </clr-vertical-nav-group-children>
+      </clr-vertical-nav-group>
+      <clr-vertical-nav-group routerLinkActive="active">
+        <clr-icon shape="cog" clrVerticalNavIcon></clr-icon>
+        ตั้งค่าการใช้งาน
+        <clr-vertical-nav-group-children>
+          <a clrVerticalNavLink routerLink="#" routerLinkActive="active">
+            Users
+          </a>
+          <a clrVerticalNavLink routerLink="#" routerLinkActive="active">
+            Report Query
+          </a>
+        </clr-vertical-nav-group-children>
+      </clr-vertical-nav-group>
+    </clr-vertical-nav>
+  </div>
+</div>
