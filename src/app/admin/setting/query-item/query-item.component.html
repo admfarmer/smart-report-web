@@ -4,24 +4,23 @@
   </div>
   <div>
     <h4 class="card-title">
-      <clr-icon shape="view-cards"></clr-icon> รายงาน Hi Report
+      <clr-icon shape="view-cards"></clr-icon> ข้อมูลการสร้างรายงาน
     </h4>
   </div>
   <div>
     <clr-datagrid class="col-lg-10 col-xs-12 col-md-12 col-xl-12">
-      <clr-dg-column style="width: 400px;">sub_item_name</clr-dg-column>
-      <!-- <clr-dg-column style="width: 200px;">query_params</clr-dg-column> -->
+      <clr-dg-column>sub_item_name</clr-dg-column>
+      <clr-dg-column>query_params</clr-dg-column>
       <clr-dg-column>template</clr-dg-column>
       <clr-dg-column style="width: 150px;">##</clr-dg-column>
 
       <clr-dg-row *clrDgItems="let item of items">
         <clr-dg-cell>{{item.sub_item_name}}</clr-dg-cell>
-        <!-- <clr-dg-cell>{{item.query_params}}</clr-dg-cell> -->
+        <clr-dg-cell>{{item.query_params}}</clr-dg-cell>
         <clr-dg-cell>{{item.template}}</clr-dg-cell>
         <clr-dg-cell>
-          <button class="btn btn-sm btn-gradient-primary" (click)="openView(item)">
-            <i class="mdi mdi-arrow-right"></i>ออกรายงาน</button>
-
+          <button class="btn btn-sm btn-gradient-primary" (click)="openEdit(item)">
+            <i class="mdi mdi-arrow-right"></i>แก้ไขข้อมูล</button>
         </clr-dg-cell>
       </clr-dg-row>
       <clr-dg-footer>
@@ -32,4 +31,4 @@
     </clr-datagrid>
   </div>
 </div>
-<app-modal-query-view #mdlQuery (onSave)="onSave($event)"></app-modal-query-view>
+<!-- <app-modal-query-view #mdlQuery (onSave)="onSave($event)"></app-modal-query-view> -->

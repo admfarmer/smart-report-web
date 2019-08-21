@@ -20,27 +20,27 @@ export class UserService {
   }
 
   async list() {
-    const _url = `${this.apiUrl}/users`;
+    const _url = `${this.apiUrl}/v1/user/info`;
     return this.httpClient.get(_url, this.httpOptions).toPromise();
   }
 
   async info(userId: any) {
-    const _url = `${this.apiUrl}/users/${userId}`;
+    const _url = `${this.apiUrl}/v1/user/${userId}`;
     return this.httpClient.get(_url, this.httpOptions).toPromise();
   }
 
   async save(data: object) {
-    const _url = `${this.apiUrl}/users`;
+    const _url = `${this.apiUrl}/v1/user`;
     return this.httpClient.post(_url, data, this.httpOptions).toPromise();
   }
 
   async update(userId: any, data: object) {
-    const _url = `${this.apiUrl}/users/${userId}`;
+    const _url = `${this.apiUrl}/v1/user/${userId}`;
     return this.httpClient.put(_url, data, this.httpOptions).toPromise();
   }
 
   async remove(userId: any) {
-    const _url = `${this.apiUrl}/users/${userId}`;
+    const _url = `${this.apiUrl}/v1/user/${userId}`;
     return this.httpClient.delete(_url, this.httpOptions).toPromise();
   }
 

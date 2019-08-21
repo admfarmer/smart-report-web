@@ -1,0 +1,41 @@
+<div class="card-body">
+  <div>
+    <p> </p>
+  </div>
+  <div>
+    <h4 class="card-title">
+      <clr-icon shape="view-cards"></clr-icon> ข้อมูลเมนูรายงาน
+    </h4>
+  </div>
+  <div>
+    <clr-datagrid class="col-lg-10 col-xs-12 col-md-12 col-xl-12">
+      <clr-dg-column>item_name</clr-dg-column>
+      <clr-dg-column>comment</clr-dg-column>
+      <clr-dg-column style="width: 50px;">สถานะ</clr-dg-column>
+      <clr-dg-column style="width: 150px;">##</clr-dg-column>
+
+      <clr-dg-row *clrDgItems="let item of items">
+        <clr-dg-cell>{{item.item_name}}</clr-dg-cell>
+        <clr-dg-cell>{{item.comment}}</clr-dg-cell>
+        <clr-dg-cell>
+          <span *ngIf="item.item_status=='1'">
+            <clr-icon shape="check"></clr-icon>
+          </span>
+          <span *ngIf="item.item_status=='0'">
+            <clr-icon shape="times"></clr-icon>
+          </span>
+        </clr-dg-cell>
+        <clr-dg-cell>
+          <button class="btn btn-sm btn-gradient-primary" (click)="openEdit(item)">
+            <i class="mdi mdi-arrow-right"></i>แก้ไขข้อมูล</button>
+        </clr-dg-cell>
+      </clr-dg-row>
+      <clr-dg-footer>
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} item
+        <clr-dg-pagination #pagination [clrDgPageSize]="10"></clr-dg-pagination>
+        <clr-dg-page-size [clrPageSizeOptions]="[5,10,20,50,100]">Users per page</clr-dg-page-size>
+      </clr-dg-footer>
+    </clr-datagrid>
+  </div>
+</div>
+<!-- <app-modal-query-view #mdlQuery (onSave)="onSave($event)"></app-modal-query-view> -->

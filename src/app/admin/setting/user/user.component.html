@@ -1,0 +1,34 @@
+<div class="card-body">
+  <div>
+    <p> </p>
+  </div>
+  <div>
+    <h4 class="card-title">
+      <clr-icon shape="view-cards"></clr-icon> ข้อมูลผู้ใช้งานระบบ
+    </h4>
+  </div>
+  <div>
+    <clr-datagrid class="col-lg-10 col-xs-12 col-md-12 col-xl-12">
+      <clr-dg-column>ชื่อ - สกุล</clr-dg-column>
+      <clr-dg-column>รหัสผู้ใช้งาน</clr-dg-column>
+      <clr-dg-column style="width: 200px;">สิทธิ์การใช้งาน</clr-dg-column>
+      <clr-dg-column style="width: 150px;">##</clr-dg-column>
+
+      <clr-dg-row *clrDgItems="let item of items">
+        <clr-dg-cell>{{item.fullname}}</clr-dg-cell>
+        <clr-dg-cell>{{item.username}}</clr-dg-cell>
+        <clr-dg-cell>{{item.user_type}}</clr-dg-cell>
+        <clr-dg-cell>
+          <button class="btn btn-sm btn-gradient-primary" (click)="openEdit(item)">
+            <i class="mdi mdi-arrow-right"></i>แก้ไขข้อมูล</button>
+        </clr-dg-cell>
+      </clr-dg-row>
+      <clr-dg-footer>
+        {{pagination.firstItem + 1}} - {{pagination.lastItem + 1}} of {{pagination.totalItems}} item
+        <clr-dg-pagination #pagination [clrDgPageSize]="10"></clr-dg-pagination>
+        <clr-dg-page-size [clrPageSizeOptions]="[5,10,20,50,100]">Users per page</clr-dg-page-size>
+      </clr-dg-footer>
+    </clr-datagrid>
+  </div>
+</div>
+<!-- <app-modal-query-view #mdlQuery (onSave)="onSave($event)"></app-modal-query-view> -->

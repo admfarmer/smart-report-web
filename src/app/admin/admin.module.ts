@@ -11,16 +11,20 @@ import { GrdFilterPipe } from '../shared/grd-filter.pipe';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { LayoutComponent } from 'src/app/admin/layout/layout.component';
-import { HomeComponent } from './home/home.component';
 import { QueryComponent } from './query/query.component';
+import { UserComponent } from './setting/user/user.component';
+import { MenuItemComponent } from './setting/menu-item/menu-item.component';
+import { QueryItemComponent } from './setting/query-item/query-item.component';
 
 
 @NgModule({
   declarations: [
     LayoutComponent,
-    HomeComponent,
     QueryComponent,
-    GrdFilterPipe
+    GrdFilterPipe,
+    UserComponent,
+    MenuItemComponent,
+    QueryItemComponent
   ],
   imports: [
     CommonModule,

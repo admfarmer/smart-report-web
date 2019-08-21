@@ -11,10 +11,17 @@ import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule } from '@angular/forms';
+import { ModalQueryItemComponent } from './modal-query-item/modal-query-item.component';
+import { ModalMenuItemComponent } from './modal-menu-item/modal-menu-item.component';
+import { ModalAddUserComponent } from './modal-add-user/modal-add-user.component';
 
 @NgModule({
   declarations: [
-    ModalQueryViewComponent],
+    ModalQueryViewComponent,
+    ModalQueryItemComponent,
+    ModalMenuItemComponent,
+    ModalAddUserComponent
+  ],
   imports: [
     CommonModule,
     ClarityModule,
@@ -24,7 +31,10 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   exports: [
-    ModalQueryViewComponent
+    ModalQueryViewComponent,
+    ModalQueryItemComponent,
+    ModalMenuItemComponent,
+    ModalAddUserComponent
   ],
   providers: [
     AuthGuardService,

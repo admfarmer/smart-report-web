@@ -14,9 +14,7 @@
             <div class="col-md-7 alert alert-warning">
               <clr-icon shape="pinboard"></clr-icon>หมายเหตุ : {{ comment }}
             </div>
-
           </div>
-
           <hr>
           <section class="form-block" *ngFor="let xx of param_xx; let idx = index;">
             <div class="clr-form-control">
@@ -25,39 +23,6 @@
                 <input type="date" name="{{xx}}" id="{{xx}}" size="35" value="" #input (input)="KeyParam(xx,input,idx)"
                   class="clr-input">
               </div>
-              <!-- <div class="select" *ngIf="xx == 'ampur'">
-                <select name="xx" id="xx" #input (input)="Paramampur(xx,input,idx,param_xx)">
-                  <option [value]="''">---- เลือกอำเภอ ----</option>
-                  <option [value]="am.amppart" *ngFor="let am of ampur">{{am.nameampur}}</option>
-                </select>
-              </div>
-
-              <div class="select" *ngIf="xx == 'cln'">
-                <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
-                  <option [value]="''">---- เลือกคลีนิค ----</option>
-                  <option [value]="cn.cln" *ngFor="let cn of cln">{{cn.namecln}}</option>
-                </select>
-              </div>
-
-              <div class="select" *ngIf="xx == 'pcu'">
-                <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
-                  <option [value]="''">---- เลือกรพ. ส.ต. ----</option>
-                  <option [value]="hos.hospsub" *ngFor="let hos of pcu ">{{hos.namehosp}}</option>
-                </select>
-              </div>
-
-              <div class="select" *ngIf="xx == 'idpm'">
-                <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
-                  <option [value]="''">---- เลือกตึกผู้ป่วยใน ----</option>
-                  <option [value]="idm.idpm" *ngFor="let idm of idpm ">{{idm.nameidpm}}</option>
-                </select>
-              </div>
-              <div class="select" *ngIf="xx == 'dct'">
-                <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
-                  <option [value]="''">---- เลือกแพทย์----</option>
-                  <option [value]="dctm.lcno" *ngFor="let dctm of dct ">{{dctm.fname}}</option>
-                </select>
-              </div> -->
               <div class="select" *ngIf="xx == 'month'">
                 <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
                   <option [value]="''">---- เลือกเดือน ----</option>
@@ -79,6 +44,8 @@
               <div class="select" *ngIf="xx == 'yearbudget'">
                 <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
                   <option [value]="''">---- เลือกปี พ.ศ. ----</option>
+                  <option [value]="'2020'">2563</option>
+                  <option [value]="'2019'">2562</option>
                   <option [value]="'2018'">2561</option>
                   <option [value]="'2017'">2560</option>
                   <option [value]="'2016'">2559</option>
@@ -97,18 +64,10 @@
                   <option [value]="'0'">นอกบัญชี</option>
                 </select>
               </div>
-              <!-- <div class="select" *ngIf="xx == 'groupdx'">
-                <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
-                  <option [value]="''">---- เลือกกลุ่มDX----</option>
-                  <option [value]="cgroup2.cgroup" *ngFor="let cgroup2 of groupdx ">{{cgroup2.e_name}}
-                  </option>
-                </select>
-              </div> -->
-              <div *ngIf="xx !== 'datestart' && xx !== 'dateend' && xx !== 'month' && xx !== 'yearbudget' && xx !=='ampur'
-                    && xx !=='cln'  && xx !=='pcu'  && xx !=='idpm'&& xx !=='dct'&& xx !=='ed'&& xx !=='groupdx'">
+              <div
+                *ngIf="xx !== 'datestart' && xx !== 'dateend' && xx !== 'month' && xx !== 'yearbudget' && xx !=='ed'">
                 <input type="text" name="xx" id="xx" size="35" value="" #input (keyup)="KeyParam(xx,input,idx)"
                   class="clr-input">
-                <!-- <input type="text " name="xx " [(ngModel)]="xx " size="35 "> -->
               </div>
             </div>
           </section>

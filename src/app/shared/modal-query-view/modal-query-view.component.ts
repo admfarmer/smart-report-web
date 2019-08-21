@@ -42,7 +42,7 @@ export class ModalQueryViewComponent implements OnInit {
 
   async open(info: any = null) {
     this.opened = true;
-    console.log(info);
+    // console.log(info);
 
     this.sql = info.query_sql
     this.params = info.query_params
@@ -51,24 +51,29 @@ export class ModalQueryViewComponent implements OnInit {
     this.template = info.template
     if (this.params) {
       this.param_xx = this.params.split(",");
-      console.log(this.param_xx);
+      // console.log(this.param_xx);
     }
   }
   dismiss() {
     this.opened = false;
+    this.params = null
+    this.param_xx = null
+    this.param_x = [null];
+    this.param = [null];
+    this.itemmenu = [null];
+    this.items = [null];
+    this.fieldDatas = [null];
+    this.tableDatas = [null];
   }
 
   KeyParam(xx, input, idx) {
-    console.log(input.value, ':', idx, ':', xx);
-
     // let param: any;
     let name: any = xx;
     let data: any = input.value;
     let _info = { name, data }
     // this.param.push(_info)
     this.param[idx] = { name, data };
-    console.log(this.param);
-
+    // console.log(this.param);
   }
 
   async gitShowView() {
@@ -76,7 +81,6 @@ export class ModalQueryViewComponent implements OnInit {
     let i: any;
     let x: any;
     let xx: any;
-    // this.open = false;
 
     for (i = 0; i < this.param.length; i++) {
       x = this.param[i].name;
@@ -84,16 +88,18 @@ export class ModalQueryViewComponent implements OnInit {
       this.param_x[i] = xx;
     }
     this.params = this.param_x;
-    console.log(this.params);
-
-    // this.Dataviews = [];
+    // console.log(this.params);
 
     try {
+      this.itemmenu = [null];
+      this.items = [null];
+
       const rs: any = await this.queryViewService.viewReport(this.sql, this.params);
       if (rs.info) {
-        // this.items = rs.info;
         let _info = rs.info;
-        console.log(_info);
+        // console.log(_info);
+        this.fieldDatas = [null];
+        this.tableDatas = [null];
 
         const xx = _info[0].length
         const _datafield = [];
@@ -112,7 +118,6 @@ export class ModalQueryViewComponent implements OnInit {
         })
         this.items.forEach(v => {   // ดึงข้อมูล roows ไปเก็บไว้ที่ _data
           let _data = [];
-          // tslint:disable-next-line:no-shadowed-variable
           _.forEach(v, x => {
             _data.push(x);
           });
@@ -120,8 +125,8 @@ export class ModalQueryViewComponent implements OnInit {
         });
         this.fieldDatas = _datafield;  // ส่งค่า _datafield ไปเก็บใน 
 
-        console.log('tableDatas', this.tableDatas);
-        console.log('fieldDatas', this.fieldDatas);
+        // console.log('tableDatas', this.tableDatas);
+        // console.log('fieldDatas', this.fieldDatas);
         this.loading = false;
 
       } else {
@@ -143,9 +148,7 @@ export class ModalQueryViewComponent implements OnInit {
       useBom: true,
       headers: [this.fieldDatas]
     };
-    // tslint:disable-next-line:no-unused-expression
     new ngxCsv(this.items, this.title_name, options);
-    // this.excelService.exportAsExcelFile(excelDatas, this.tableName);
   }
 
 }

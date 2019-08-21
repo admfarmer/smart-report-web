@@ -15,7 +15,6 @@ export class QueryComponent implements OnInit {
 
   items: any = [];
   info: any = {};
-  searchText: string;
   menuId: number;
   levelId: any;
 
@@ -37,14 +36,12 @@ export class QueryComponent implements OnInit {
   }
 
   openView(item: any) {
-    console.log(item);
+    // console.log(item);
     this.mdlQuery.open(item);
 
   }
   onSave(event: any) {
-    // this.getKpiInfo();
     this.alertService.success();
-    // this.getKpiInfo();
   }
 
   async gitInfo() {
@@ -56,7 +53,7 @@ export class QueryComponent implements OnInit {
         const rs: any = await this.queryItemsService.getSelect(_menuId, this.levelId);
         if (rs.info) {
           this.items = rs.info;
-          console.log(this.items);
+          // console.log(this.items);
         } else {
           this.alertService.error('เกิดข้อผิดพลาด');
         }
@@ -64,7 +61,7 @@ export class QueryComponent implements OnInit {
         const rs: any = await this.queryItemsService.getInfo();
         if (rs.info) {
           this.items = rs.info;
-          console.log(this.items);
+          // console.log(this.items);
         } else {
           this.alertService.error('เกิดข้อผิดพลาด');
         }

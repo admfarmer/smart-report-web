@@ -39,7 +39,7 @@ export class LayoutComponent implements OnInit {
       const rs: any = await this.menuItemService.getMenuItem();
       if (rs.info) {
         this.items = rs.info;
-        console.log(this.items);
+        // console.log(this.items);
       } else {
         this.alertService.error('เกิดข้อผิดพลาด');
       }
@@ -49,7 +49,7 @@ export class LayoutComponent implements OnInit {
     }
   }
   openQuery(item: any) {
-    console.log(item);
+    // console.log(item);
     sessionStorage.setItem('menuId', item);
     // this.router.navigate([`admin/query/${item}`]);
 
