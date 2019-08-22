@@ -2,6 +2,7 @@ import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angu
 import { AlertService } from 'src/app/shared/alert.service';
 import { QueryItemsService } from 'src/app/shared/query-items.service';
 import { MenuItemService } from 'src/app/shared/menu-item.service'
+import { UserTypeService } from 'src/app/shared/user-type.service'
 
 @Component({
   selector: 'app-modal-query-item',
@@ -15,6 +16,7 @@ export class ModalQueryItemComponent implements OnInit {
   opened: boolean = false;
   loading: boolean = false;
 
+  typeitems: any = [];
   items: any = [];
   info: any = {};
   menuitems: any = [];
@@ -31,11 +33,13 @@ export class ModalQueryItemComponent implements OnInit {
     private alertService: AlertService,
     private queryItemsService: QueryItemsService,
     private menuItemService: MenuItemService,
+    private userTypeService: UserTypeService,
 
   ) { }
 
   ngOnInit() {
     this.getMenuItem();
+    this.getTypeInfo();
   }
   async open(info: any = null) {
     this.opened = true;
@@ -112,6 +116,20 @@ export class ModalQueryItemComponent implements OnInit {
       if (rs.info) {
         this.menuitems = rs.info;
         // console.log(this.items);
+      } else {
+        this.alertService.error('เกิดข้อผิดพลาด');
+      }
+    } catch (error) {
+      console.log(error);
+      this.alertService.error();
+    }
+  }
+  async getTypeInfo() {
+    try {
+      const rs: any = await this.userTypeService.getInfo();
+      if (rs.info) {
+        this.typeitems = rs.info;
+        // console.log(this.typeitems);
       } else {
         this.alertService.error('เกิดข้อผิดพลาด');
       }

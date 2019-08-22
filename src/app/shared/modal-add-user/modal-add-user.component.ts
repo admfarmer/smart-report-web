@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
 import { AlertService } from 'src/app/shared/alert.service';
 import { UserService } from 'src/app/shared/user.service';
+import { UserTypeService } from 'src/app/shared/user-type.service'
 
 @Component({
   selector: 'app-modal-add-user',
@@ -13,6 +14,7 @@ export class ModalAddUserComponent implements OnInit {
   opened: boolean = false;
   loading: boolean = false;
 
+  typeitems: any = [];
   items: any = [];
   info: any = {};
 
@@ -29,9 +31,12 @@ export class ModalAddUserComponent implements OnInit {
   constructor(
     private alertService: AlertService,
     private userService: UserService,
+    private userTypeService: UserTypeService,
   ) { }
 
   ngOnInit() {
+    this.getTypeInfo();
+
   }
 
   async open(info: any = null) {
@@ -127,4 +132,19 @@ export class ModalAddUserComponent implements OnInit {
     this.user_type = null;
     this.opened = false;
   }
+  async getTypeInfo() {
+    try {
+      const rs: any = await this.userTypeService.getInfo();
+      if (rs.info) {
+        this.typeitems = rs.info;
+        // console.log(this.typeitems);
+      } else {
+        this.alertService.error('เกิดข้อผิดพลาด');
+      }
+    } catch (error) {
+      console.log(error);
+      this.alertService.error();
+    }
+  }
+
 }

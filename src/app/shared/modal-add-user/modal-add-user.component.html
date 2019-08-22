@@ -21,10 +21,7 @@
       <clr-select-container>
         <label>สิทธิ์ผู้ใช่งาน</label>
         <select clrSelect [(ngModel)]="level_id" name="level_id" id="level_id">
-          <option value="1">General Personnel</option>
-          <option value="2">User Management</option>
-          <option value="3">Supervisor</option>
-          <option value="4">Administrator</option>
+          <option *ngFor="let item of typeitems" [value]="item.type_id">{{item.type_name}}</option>
         </select>
       </clr-select-container>
       <clr-select-container>
