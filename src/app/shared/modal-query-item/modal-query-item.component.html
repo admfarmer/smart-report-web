@@ -1,1 +1,47 @@
-<p>modal-query-item works!</p>
+<clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false" [clrModalSize]="'lg'">
+  <h3 class="modal-title">บันทึกข้อมูลรายงาน</h3>
+  <div class="modal-body">
+    <form clrForm>
+      <clr-select-container>
+        <label>ชื่อหมวดรายงาน</label>
+        <select clrSelect [(ngModel)]="item_id" name="item_id" id="item_id" required>
+          <option *ngFor="let item of menuitems" [value]="item.item_id">{{item.item_name}}</option>
+        </select>
+      </clr-select-container>
+      <clr-input-container>
+        <label>ชื่อรายงาน</label>
+        <input clrInput type="text" [(ngModel)]="query_name" name="query_name" id="query_name" required />
+      </clr-input-container>
+      <clr-input-container>
+        <label>query_params</label>
+        <input clrInput type="text" [(ngModel)]="query_params" name="query_params" id="query_params" />
+      </clr-input-container>
+      <clr-textarea-container>
+        <label>query_sql</label>
+        <textarea clrTextarea [(ngModel)]="query_sql" name="query_sql" id="query_sql" required></textarea>
+      </clr-textarea-container>
+      <clr-textarea-container>
+        <label>template</label>
+        <textarea clrTextarea [(ngModel)]="template" name="template" id="template" required></textarea>
+      </clr-textarea-container>
+      <clr-textarea-container>
+        <label>comment</label>
+        <textarea clrTextarea [(ngModel)]="comment" name="comment" id="comment"></textarea>
+      </clr-textarea-container>
+      <clr-select-container>
+        <label>สิทธิ์ผู้ใช่งาน</label>
+        <select clrSelect [(ngModel)]="level_id" name="level_id" id="level_id">
+          <option value="1">General Personnel</option>
+          <option value="2">User Management</option>
+          <option value="3">Supervisor</option>
+          <option value="4">Administrator</option>
+        </select>
+      </clr-select-container>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="save()"
+      *ngIf="item_id&&query_name&&query_sql&&template">บันทีก</button>
+    <button type="button" class="btn btn-outline-danger" (click)="dismiss()">ยกเลิก</button>
+  </div>
+</clr-modal>

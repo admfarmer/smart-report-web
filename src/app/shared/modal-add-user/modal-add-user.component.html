@@ -1,1 +1,51 @@
-<p>modal-add-user works!</p>
+<clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false" [clrModalSize]="'lg'">
+  <h3 class="modal-title">บันทึกข้อมูลผู้ใช้งาน</h3>
+  <div class="modal-body">
+    <form clrForm>
+      <clr-input-container>
+        <label>ชื่อผู้ใช้งาน</label>
+        <input clrInput type="text" [(ngModel)]="username" name="username" id="username" required />
+      </clr-input-container>
+      <clr-input-container>
+        <label>รหัสผ่าน</label>
+        <input clrInput type="text" [(ngModel)]="password" name="password" id="password" />
+      </clr-input-container>
+      <clr-input-container>
+        <label>เลขบัตรประชาชน</label>
+        <input clrInput type="text" [(ngModel)]="cid" name="cid" id="cid" required />
+      </clr-input-container>
+      <clr-input-container>
+        <label>ชื่อ - สกุล</label>
+        <input clrInput type="text" [(ngModel)]="fullname" name="fullname" id="fullname" required />
+      </clr-input-container>
+      <clr-select-container>
+        <label>สิทธิ์ผู้ใช่งาน</label>
+        <select clrSelect [(ngModel)]="level_id" name="level_id" id="level_id">
+          <option value="1">General Personnel</option>
+          <option value="2">User Management</option>
+          <option value="3">Supervisor</option>
+          <option value="4">Administrator</option>
+        </select>
+      </clr-select-container>
+      <clr-select-container>
+        <label>สถานะ</label>
+        <select clrSelect [(ngModel)]="user_type" name="user_type" id="user_type">
+          <option value="ADMIN">ผู้ใช้งานระบบ</option>
+          <option value="MEMBER">บุคลากรทั่วไป</option>
+        </select>
+      </clr-select-container>
+      <clr-select-container>
+        <label>สถานะ</label>
+        <select clrSelect [(ngModel)]="is_accept" name="is_accept" id="is_accept">
+          <option value="Y">เปิดใช้งาน</option>
+          <option value="N">ปิดใช้งาน</option>
+        </select>
+      </clr-select-container>
+    </form>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="save()"
+      *ngIf="username&&cid&&fullname&&level_id&&user_type&&is_accept">บันทีก</button>
+    <button type="button" class="btn btn-outline-danger" (click)="dismiss()">ยกเลิก</button>
+  </div>
+</clr-modal>

@@ -8,14 +8,19 @@
     </h4>
   </div>
   <div>
+    <button (click)="openRegister()" class="float-right btn-lg btn btn-sm btn-gradient-success">
+      เพิ่มผู้ใช้งาน
+    </button>
+  </div>
+  <div>
     <clr-datagrid class="col-lg-10 col-xs-12 col-md-12 col-xl-12">
-      <clr-dg-column>sub_item_name</clr-dg-column>
+      <clr-dg-column>query_name</clr-dg-column>
       <clr-dg-column>query_params</clr-dg-column>
       <clr-dg-column>template</clr-dg-column>
       <clr-dg-column style="width: 150px;">##</clr-dg-column>
 
       <clr-dg-row *clrDgItems="let item of items">
-        <clr-dg-cell>{{item.sub_item_name}}</clr-dg-cell>
+        <clr-dg-cell>{{item.query_name}}</clr-dg-cell>
         <clr-dg-cell>{{item.query_params}}</clr-dg-cell>
         <clr-dg-cell>{{item.template}}</clr-dg-cell>
         <clr-dg-cell>
@@ -31,4 +36,4 @@
     </clr-datagrid>
   </div>
 </div>
-<!-- <app-modal-query-view #mdlQuery (onSave)="onSave($event)"></app-modal-query-view> -->
+<app-modal-query-item #mdlQueryitems (onSave)="onSave($event)"></app-modal-query-item>

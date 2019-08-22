@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AlertService } from 'src/app/shared/alert.service'
 import { UserService } from 'src/app/shared/user.service'
+import { ModalAddUserComponent } from 'src/app/shared/modal-add-user/modal-add-user.component'
 
 @Component({
   selector: 'app-user',
@@ -8,9 +9,12 @@ import { UserService } from 'src/app/shared/user.service'
   styleUrls: ['./user.component.scss']
 })
 export class UserComponent implements OnInit {
+
+  @ViewChild('mdlUsers', { static: true }) private mdlUsers: ModalAddUserComponent;
+
   items: any = [];
   info: any = {};
-
+  user_id: any;
   constructor(
     private alertService: AlertService,
     private userService: UserService,
@@ -19,13 +23,20 @@ export class UserComponent implements OnInit {
   ngOnInit() {
     this.getInfo();
   }
+
+  openRegister() {
+    this.user_id = null;
+    this.mdlUsers.open();
+  }
+
   openEdit(item: any) {
-    console.log(item);
-    // this.mdlQuery.open(item);
+    // console.log(item);
+    this.mdlUsers.open(item);
 
   }
   onSave(event: any) {
-    // this.alertService.success();
+    this.alertService.success();
+    this.getInfo();
   }
 
   async getInfo() {

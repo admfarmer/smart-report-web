@@ -8,6 +8,12 @@
     </h4>
   </div>
   <div>
+    <button (click)="openRegister()" class="float-right btn-lg btn btn-sm btn-gradient-success">
+      เพิ่มผู้ใช้งาน
+    </button>
+  </div>
+
+  <div>
     <clr-datagrid class="col-lg-10 col-xs-12 col-md-12 col-xl-12">
       <clr-dg-column>item_name</clr-dg-column>
       <clr-dg-column>comment</clr-dg-column>
@@ -18,10 +24,10 @@
         <clr-dg-cell>{{item.item_name}}</clr-dg-cell>
         <clr-dg-cell>{{item.comment}}</clr-dg-cell>
         <clr-dg-cell>
-          <span *ngIf="item.item_status=='1'">
+          <span *ngIf="item.item_status=='Y'">
             <clr-icon shape="check"></clr-icon>
           </span>
-          <span *ngIf="item.item_status=='0'">
+          <span *ngIf="item.item_status=='N'">
             <clr-icon shape="times"></clr-icon>
           </span>
         </clr-dg-cell>
@@ -38,4 +44,4 @@
     </clr-datagrid>
   </div>
 </div>
-<!-- <app-modal-query-view #mdlQuery (onSave)="onSave($event)"></app-modal-query-view> -->
+<app-modal-menu-item #mdlMenitems (onSave)="onSave($event)"></app-modal-menu-item>

@@ -8,16 +8,31 @@
     </h4>
   </div>
   <div>
+    <button (click)="openRegister()" class="float-right btn-lg btn btn-sm btn-gradient-success">
+      เพิ่มผู้ใช้งาน
+    </button>
+  </div>
+
+  <div>
     <clr-datagrid class="col-lg-10 col-xs-12 col-md-12 col-xl-12">
       <clr-dg-column>ชื่อ - สกุล</clr-dg-column>
       <clr-dg-column>รหัสผู้ใช้งาน</clr-dg-column>
       <clr-dg-column style="width: 200px;">สิทธิ์การใช้งาน</clr-dg-column>
+      <clr-dg-column style="width: 200px;">สถานะ</clr-dg-column>
       <clr-dg-column style="width: 150px;">##</clr-dg-column>
 
       <clr-dg-row *clrDgItems="let item of items">
         <clr-dg-cell>{{item.fullname}}</clr-dg-cell>
         <clr-dg-cell>{{item.username}}</clr-dg-cell>
         <clr-dg-cell>{{item.user_type}}</clr-dg-cell>
+        <clr-dg-cell>
+          <span *ngIf="item.is_accept=='Y'">
+            <clr-icon shape="check"></clr-icon>
+          </span>
+          <span *ngIf="item.is_accept=='N'">
+            <clr-icon shape="times"></clr-icon>
+          </span>
+        </clr-dg-cell>
         <clr-dg-cell>
           <button class="btn btn-sm btn-gradient-primary" (click)="openEdit(item)">
             <i class="mdi mdi-arrow-right"></i>แก้ไขข้อมูล</button>
@@ -31,4 +46,4 @@
     </clr-datagrid>
   </div>
 </div>
-<!-- <app-modal-query-view #mdlQuery (onSave)="onSave($event)"></app-modal-query-view> -->
+<app-modal-add-user #mdlUsers (onSave)="onSave($event)"></app-modal-add-user>
