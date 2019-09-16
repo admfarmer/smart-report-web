@@ -1,7 +1,26 @@
 <clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false" [clrModalSize]="'lg'">
   <h3 class="modal-title">บันทึกข้อมูลหมวดรายงาน</h3>
   <div class="modal-body">
-    <form clrForm>
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="item_name" class="required">ชื่อหมวดรายงาน</label>
+          <input type="text" name="item_name" id="item_name" class="form-control" [(ngModel)]="item_name">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="comment" class="required">รายละเอียด</label>
+          <textarea rows="4" name="comment" id="comment" class="form-control" [(ngModel)]="comment"></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">สถานะ</label>
+        <select class="form-control" [(ngModel)]="item_status" name="item_status" id="item_status">
+          <option value="Y">เปิดใช้งาน</option>
+          <option value="N">ปิดใช้งาน</option>
+        </select>
+      </div>
+    </form>
+    <!-- <form clrForm>
       <clr-input-container>
         <label>ชื่อหมวดรายงาน</label>
         <input clrInput type="text" [(ngModel)]="item_name" name="item_name" id="item_name" required />
@@ -17,11 +36,10 @@
           <option value="N">ปิดใช้งาน</option>
         </select>
       </clr-select-container>
-    </form>
+    </form> -->
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="save()"
-      *ngIf="item_name&&comment&&item_status">บันทีก</button>
-    <button type="button" class="btn btn-outline-danger" (click)="dismiss()">ยกเลิก</button>
+    <button type="button" class="btn btn-3" (click)="save()" *ngIf="item_name&&comment&&item_status">บันทีก</button>
+    <button type="button" class="btn btn-5" (click)="dismiss()">ยกเลิก</button>
   </div>
 </clr-modal>

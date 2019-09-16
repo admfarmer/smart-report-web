@@ -6,14 +6,29 @@
         <form class="form-group  ">
 
           <div class="row ">
-            <div class=" font-weight-bold col-md-5"><u>
-                <h4>
+            <div class=" font-weight-bold col-md-5">
+                <div class="panel panel-yellow">
+                  <div class="panel-heading">
+                      <clr-icon shape="event"></clr-icon>ค้นหาข้อมูลตามเงื่อนไข
+                  </div>
+                </div>
+                <!-- <h4>
                   <clr-icon shape="event"></clr-icon>ค้นหาข้อมูลตามเงื่อนไข
-                </h4>
-              </u></div>
-            <div class="col-md-7 alert alert-warning">
-              <clr-icon shape="pinboard"></clr-icon>หมายเหตุ : {{ comment }}
+                </h4> -->
+              </div>
+            <div class="alert alert-info" role="alert">
+              <div class="alert-items">
+                <div class="alert-item static">
+                  <div class="alert-icon-wrapper">
+                    <clr-icon class="alert-icon" shape="info-circle"></clr-icon>
+                  </div>
+                  <span class="alert-text">หมายเหตุ : {{ comment }}</span>
+                </div>
+              </div>
             </div>
+            <!-- <div class="col-md-7 alert alert-warning">
+              <clr-icon shape="pinboard"></clr-icon>หมายเหตุ : {{ comment }}
+            </div> -->
           </div>
           <hr>
           <section class="form-block" *ngFor="let xx of param_xx; let idx = index;">
@@ -21,7 +36,7 @@
               <label for="aForm_2" class="clr-control-label">{{ xx }}</label>
               <div *ngIf="xx == 'datestart' || xx == 'dateend'">
                 <input type="date" name="{{xx}}" id="{{xx}}" size="35" value="" #input (input)="KeyParam(xx,input,idx)"
-                  class="clr-input">
+                  class="form-control">
               </div>
               <div class="select" *ngIf="xx == 'month'">
                 <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
@@ -67,14 +82,14 @@
               <div
                 *ngIf="xx !== 'datestart' && xx !== 'dateend' && xx !== 'month' && xx !== 'yearbudget' && xx !=='ed'">
                 <input type="text" name="xx" id="xx" size="35" value="" #input (keyup)="KeyParam(xx,input,idx)"
-                  class="clr-input">
+                  class="form-control">
               </div>
             </div>
           </section>
         </form>
       </div>
       <div class="form-group ">
-        <button type="submit" class=" btn btn-primary" (click)="gitShowView()">Ok</button>
+        <button type="submit" class=" btn btn-3" (click)="gitShowView()">Ok</button>
       </div>
       <hr>
     </section>
@@ -89,7 +104,7 @@
           </div>
           <div class="col-md-1">
             <section class="form-block " *ngIf="fieldDatas !='' ">
-              <button (click)="exportToExcel() " class="btn btn-warning">ส่งออก excel</button>
+              <button (click)="exportToExcel() " class="btn btn-4">ส่งออก excel</button>
             </section>
           </div>
         </div>
@@ -111,6 +126,6 @@
 
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline-danger" (click)="dismiss()">ปิด</button>
+    <button type="button" class="btn btn-5" (click)="dismiss()">ปิด</button>
   </div>
 </clr-modal>

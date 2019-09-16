@@ -1,7 +1,44 @@
 <clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false" [clrModalSize]="'lg'">
   <h3 class="modal-title">บันทึกข้อมูลรายงาน</h3>
   <div class="modal-body">
-    <form clrForm>
+    <form>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">ชื่อหมวดรายงาน</label>
+        <select class="form-control" [(ngModel)]="item_id" name="item_id" id="item_id" required>
+          <option *ngFor="let item of menuitems" [value]="item.item_id">{{item.item_name}}</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="query_name" class="required">ชื่อรายงาน</label>
+          <input type="text" name="query_name" id="query_name" class="form-control" name="query_name"
+            [(ngModel)]="query_name">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="query_params" class="required">query_params</label>
+          <input type="text" name="query_params" id="query_params" class="form-control" [(ngModel)]="query_params">
+        </div>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="query_sql" class="required">query_sql</label>
+        <textarea name="query_sql" id="query_sql" class="textarea" [(ngModel)]="query_sql"></textarea>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="template" class="required">template</label>
+        <textarea rows="6" name="template" id="template" class="textarea" [(ngModel)]="template"></textarea>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="query_params" class="required">query_params</label>
+        <textarea rows="6" name="query_params" id="query_params" class="textarea" [(ngModel)]="template"></textarea>
+      </div>
+      <div class="form-group col-md-6">
+        <label for="exampleFormControlSelect1">สิทธิ์ผู้ใช่งาน</label>
+        <select class="form-control" [(ngModel)]="level_id" name="level_id" id="level_id" required>
+          <option *ngFor="let item of typeitems" [value]="item.type_id">{{item.type_name}}</option>
+        </select>
+      </div>
+    </form>
+    <!-- <form clrForm>
       <clr-select-container>
         <label>ชื่อหมวดรายงาน</label>
         <select clrSelect [(ngModel)]="item_id" name="item_id" id="item_id" required>
@@ -25,8 +62,8 @@
         <textarea clrTextarea [(ngModel)]="template" name="template" id="template" required></textarea>
       </clr-textarea-container>
       <clr-textarea-container>
-        <label>comment</label>
-        <textarea clrTextarea [(ngModel)]="comment" name="comment" id="comment"></textarea>
+        <label>query_params</label>
+        <textarea clrTextarea [(ngModel)]="query_params" name="query_params" id="query_params"></textarea>
       </clr-textarea-container>
       <clr-select-container>
         <label>สิทธิ์ผู้ใช่งาน</label>
@@ -34,11 +71,11 @@
           <option *ngFor="let item of typeitems" [value]="item.type_id">{{item.type_name}}</option>
         </select>
       </clr-select-container>
-    </form>
+    </form> -->
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="save()"
+    <button type="button" class="btn btn-3" (click)="save()"
       *ngIf="item_id&&query_name&&query_sql&&template">บันทีก</button>
-    <button type="button" class="btn btn-outline-danger" (click)="dismiss()">ยกเลิก</button>
+    <button type="button" class="btn btn-5" (click)="dismiss()">ยกเลิก</button>
   </div>
 </clr-modal>

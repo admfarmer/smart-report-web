@@ -2,11 +2,15 @@
   <div>
     <p> </p>
   </div>
-  <div>
+  <div class="panel panel-blue">
+    <div class="panel-heading">&nbsp;&nbsp;<clr-icon shape="view-cards"></clr-icon> รายงาน Hi Report</div>
+  </div>
+  <!-- <button mat-raised-button color="accent">Accent</button> -->
+  <!-- <div>
     <h4 class="card-title">
       <clr-icon shape="view-cards"></clr-icon> รายงาน Hi Report
     </h4>
-  </div>
+  </div> -->
   <div>
     <clr-datagrid class="col-lg-10 col-xs-12 col-md-12 col-xl-12">
       <clr-dg-column style="width: 400px;">query_name</clr-dg-column>
@@ -19,7 +23,7 @@
         <!-- <clr-dg-cell>{{item.query_params}}</clr-dg-cell> -->
         <clr-dg-cell>{{item.template}}</clr-dg-cell>
         <clr-dg-cell>
-          <button class="btn btn-sm btn-gradient-primary" (click)="openView(item)">
+          <button class="btn btn-3 btn-sm" (click)="openView(item)">
             <i class="mdi mdi-arrow-right"></i>ออกรายงาน</button>
 
         </clr-dg-cell>

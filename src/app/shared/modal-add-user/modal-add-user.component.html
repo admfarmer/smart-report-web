@@ -1,7 +1,57 @@
 <clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false" [clrModalSize]="'lg'">
   <h3 class="modal-title">บันทึกข้อมูลผู้ใช้งาน</h3>
   <div class="modal-body">
-    <form clrForm>
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="username" class="required">ชื่อผู้ใช้งาน</label>
+          <input type="text" name="username" id="username" class="form-control" name="username" [(ngModel)]="username">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="password" class="required">รหัสผ่าน</label>
+          <input type="text" name="password" id="password" class="form-control" name="password" [(ngModel)]="password">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-12">
+          <label for="cid" class="required">เลขบัตรประชาชน</label>
+          <input type="text" name="cid" id="cid" class="form-control" name="cid" [(ngModel)]="cid">
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="fullname" class="required">ชื่อ - สกุล</label>
+          <input type="text" name="fullname" id="fullname" class="form-control" name="fullname" [(ngModel)]="fullname">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="password" class="required">สิทธิ์ผู้ใช่งาน</label>
+          <select class="form-control" [(ngModel)]="level_id" name="level_id" id="level_id">
+            <option *ngFor="let item of typeitems" [value]="item.type_id">{{item.type_name}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">สถานะ</label>
+          <select class="form-control" [(ngModel)]="user_type" name="user_type" id="user_type">
+            <option value="ADMIN">ผู้ใช้งานระบบ</option>
+            <option value="MEMBER">บุคลากรทั่วไป</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="exampleFormControlSelect1">สถานะ</label>
+          <select class="form-control" [(ngModel)]="is_accept" name="is_accept" id="is_accept">
+            <option value="Y">เปิดใช้งาน</option>
+            <option value="N">ปิดใช้งาน</option>
+          </select>
+        </div>
+      </div>
+
+    </form>
+    <!-- <form clrForm>
       <clr-input-container>
         <label>ชื่อผู้ใช้งาน</label>
         <input clrInput type="text" [(ngModel)]="username" name="username" id="username" required />
@@ -38,11 +88,11 @@
           <option value="N">ปิดใช้งาน</option>
         </select>
       </clr-select-container>
-    </form>
+    </form> -->
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-primary" (click)="save()"
+    <button type="button" class="btn btn-3" (click)="save()"
       *ngIf="username&&cid&&fullname&&level_id&&user_type&&is_accept">บันทีก</button>
-    <button type="button" class="btn btn-outline-danger" (click)="dismiss()">ยกเลิก</button>
+    <button type="button" class="btn btn-5" (click)="dismiss()">ยกเลิก</button>
   </div>
 </clr-modal>
