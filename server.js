@@ -4,10 +4,10 @@ var express = require('express')
 var app = express()
 var path = require('path');
 
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'dist/smart-report-web')));
 
 app.get('*', function (req, res) {
-  res.sendFile(path.join(__dirname, './dist/index.html'));
+  res.sendFile(path.join(__dirname, './dist/smart-report-web/index.html'));
 });
 
 // catch 404 and forward to error handler
@@ -33,7 +33,7 @@ app.use(function (err, req, res, next) {
 });
 
 // let port = +process.env.PORT;
-let port = 4218;
+let port = 4288;
 
 app.listen(port, function () {
   console.log(`Inventory-Web listening on port ${port}!`)
