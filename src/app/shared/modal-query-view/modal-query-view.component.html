@@ -7,15 +7,15 @@
 
           <div class="row ">
             <div class=" font-weight-bold col-md-5">
-                <div class="panel panel-yellow">
-                  <div class="panel-heading">
-                      <clr-icon shape="event"></clr-icon>ค้นหาข้อมูลตามเงื่อนไข
-                  </div>
+              <div class="panel panel-yellow">
+                <div class="panel-heading">
+                  <clr-icon shape="event"></clr-icon>ค้นหาข้อมูลตามเงื่อนไข
                 </div>
-                <!-- <h4>
+              </div>
+              <!-- <h4>
                   <clr-icon shape="event"></clr-icon>ค้นหาข้อมูลตามเงื่อนไข
                 </h4> -->
-              </div>
+            </div>
             <div class="alert alert-info" role="alert">
               <div class="alert-items">
                 <div class="alert-item static">
@@ -39,7 +39,7 @@
                   class="form-control">
               </div>
               <div class="select" *ngIf="xx == 'month'">
-                <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
+                <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)" class="form-control">
                   <option [value]="''">---- เลือกเดือน ----</option>
                   <option [value]="'01'">มกราคม</option>
                   <option [value]="'02'">กุมภาพันธ์</option>
@@ -57,7 +57,7 @@
               </div>
 
               <div class="select" *ngIf="xx == 'yearbudget'">
-                <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
+                <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)" class="form-control">
                   <option [value]="''">---- เลือกปี พ.ศ. ----</option>
                   <option [value]="'2020'">2563</option>
                   <option [value]="'2019'">2562</option>
@@ -73,7 +73,7 @@
               </div>
 
               <div class="select" *ngIf="xx == 'ed'">
-                <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)">
+                <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)" class="form-control">
                   <option [value]="''">---- เลือกยา----</option>
                   <option [value]="'1'">ในบัญชี</option>
                   <option [value]="'0'">นอกบัญชี</option>
