@@ -36,7 +36,7 @@ export class LayoutComponent implements OnInit {
 
   async getMenuItem() {
     try {
-      const rs: any = await this.menuItemService.getMenuItem();
+      const rs: any = await this.menuItemService.getMenuInfo();
       if (rs.info) {
         this.items = rs.info;
         // console.log(this.items);
