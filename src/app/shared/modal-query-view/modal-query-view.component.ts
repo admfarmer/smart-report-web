@@ -46,7 +46,7 @@ export class ModalQueryViewComponent implements OnInit {
 
     this.sql = info.query_sql
     this.params = info.query_params
-    this.title_name = info.sub_item_name
+    this.title_name = info.query_name
     this.comment = info.comment
     this.template = info.template
     if (this.params) {
