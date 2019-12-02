@@ -86,12 +86,10 @@ export class ModalQueryItemComponent implements OnInit {
       level_id: this.level_id
     }
     var rs: any;
-    console.log('query_id : ', this.query_id);
 
     if (this.query_id) {
-      rs = await this.queryItemsService.update(this.item_id, _info);
+      rs = await this.queryItemsService.update(this.query_id, _info);
     } else {
-      console.log('Save :', _info);
       rs = await this.queryItemsService.save(_info);
     }
 

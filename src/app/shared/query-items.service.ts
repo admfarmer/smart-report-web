@@ -34,13 +34,13 @@ export class QueryItemsService {
     return this.httpClient.post(_url, data, this.httpOptions).toPromise();
   }
 
-  async update(item_id: any, data: object) {
-    const _url = `${this.apiUrl}/v1/query/${item_id}`;
+  async update(query_id: any, data: object) {
+    const _url = `${this.apiUrl}/v1/query/${query_id}`;
     return this.httpClient.put(_url, data, this.httpOptions).toPromise();
   }
 
-  async remove(item_id: any) {
-    const _url = `${this.apiUrl}/v1/query/${item_id}`;
+  async remove(query_id: any) {
+    const _url = `${this.apiUrl}/v1/query/${query_id}`;
     return this.httpClient.delete(_url, this.httpOptions).toPromise();
   }
 
