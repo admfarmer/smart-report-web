@@ -52,6 +52,8 @@ export class ModalQueryViewComponent implements OnInit {
     if (this.params) {
       this.param_xx = this.params.split(",");
       // console.log(this.param_xx);
+    } else {
+      this.gitShowView();
     }
   }
   dismiss() {
