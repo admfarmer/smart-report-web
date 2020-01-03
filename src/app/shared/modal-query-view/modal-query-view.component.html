@@ -34,7 +34,11 @@
           <section class="form-block" *ngFor="let xx of param_xx; let idx = index;">
             <div class="clr-form-control">
               <label for="aForm_2" class="clr-control-label">{{ xx }}</label>
-              <div *ngIf="xx == 'datestart' || xx == 'dateend'">
+              <div *ngIf="xx == 'datestart'">
+                <input type="date | Format:dd/mm/yyyy" name="{{xx}}" id="{{xx}}" size="35" value="" #input
+                  (input)="KeyParam(xx,input,idx)" class="form-control">
+              </div>
+              <div *ngIf="xx == 'dateend'">
                 <input type="date | Format:dd/mm/yyyy" name="{{xx}}" id="{{xx}}" size="35" value="" #input
                   (input)="KeyParam(xx,input,idx)" class="form-control">
               </div>
