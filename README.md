@@ -8,5 +8,7 @@ npm i
 
 nano server.js
 
+npm run build
+
 pm2 start server.js --name smart-report-web
 
