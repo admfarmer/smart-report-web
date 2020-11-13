@@ -31,65 +31,69 @@
             </div> -->
           </div>
           <hr>
-          <section class="form-block" *ngFor="let xx of param_xx; let idx = index;">
-            <div class="clr-form-control">
-              <label for="aForm_2" class="clr-control-label">{{ xx }}</label>
-              <div *ngIf="xx == 'datestart'">
-                <input type="date" name="{{xx}}" id="{{xx}}" size="35" value="" #input (input)="KeyParam(xx,input,idx)"
-                  class="form-control">
-              </div>
-              <div *ngIf="xx == 'dateend'">
-                <input type="date" name="{{xx}}" id="{{xx}}" size="35" value="" #input (input)="KeyParam(xx,input,idx)"
-                  class="form-control">
-              </div>
-              <div class="select" *ngIf="xx == 'month'">
-                <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)" class="form-control">
-                  <option [value]="''">---- เลือกเดือน ----</option>
-                  <option [value]="'01'">มกราคม</option>
-                  <option [value]="'02'">กุมภาพันธ์</option>
-                  <option [value]="'03'">มีนาคม</option>
-                  <option [value]="'04'">เมษายน</option>
-                  <option [value]="'05'">พฤษภาคม</option>
-                  <option [value]="'06'">มิถุนายน</option>
-                  <option [value]="'07'">กรกฏาคม</option>
-                  <option [value]="'08'">สิงหาคม</option>
-                  <option [value]="'09'">กันยายน</option>
-                  <option [value]="'10'">ตุลาคม</option>
-                  <option [value]="'11'">พฤศจิกายน</option>
-                  <option [value]="'12'">ธันวาคม</option>
-                </select>
-              </div>
+          <div *ngIf="param_xx != ''">
+            <section class="form-block" *ngFor="let xx of param_xx; let idx = index;">
+              <div class="clr-form-control">
+                <label for="aForm_2" class="clr-control-label">{{ xx }}</label>
+                <div *ngIf="xx == 'datestart'">
+                  <input type="date" name="{{xx}}" id="{{xx}}" size="35" value="" #input
+                    (input)="KeyParam(xx,input,idx)" class="form-control">
+                </div>
+                <div *ngIf="xx == 'dateend'">
+                  <input type="date" name="{{xx}}" id="{{xx}}" size="35" value="" #input
+                    (input)="KeyParam(xx,input,idx)" class="form-control">
+                </div>
+                <div class="select" *ngIf="xx == 'month'">
+                  <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)" class="form-control">
+                    <option [value]="''">---- เลือกเดือน ----</option>
+                    <option [value]="'01'">มกราคม</option>
+                    <option [value]="'02'">กุมภาพันธ์</option>
+                    <option [value]="'03'">มีนาคม</option>
+                    <option [value]="'04'">เมษายน</option>
+                    <option [value]="'05'">พฤษภาคม</option>
+                    <option [value]="'06'">มิถุนายน</option>
+                    <option [value]="'07'">กรกฏาคม</option>
+                    <option [value]="'08'">สิงหาคม</option>
+                    <option [value]="'09'">กันยายน</option>
+                    <option [value]="'10'">ตุลาคม</option>
+                    <option [value]="'11'">พฤศจิกายน</option>
+                    <option [value]="'12'">ธันวาคม</option>
+                  </select>
+                </div>
 
-              <div class="select" *ngIf="xx == 'yearbudget'">
-                <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)" class="form-control">
-                  <option [value]="''">---- เลือกปี พ.ศ. ----</option>
-                  <option [value]="'2020'">2563</option>
-                  <option [value]="'2019'">2562</option>
-                  <option [value]="'2018'">2561</option>
-                  <option [value]="'2017'">2560</option>
-                  <option [value]="'2016'">2559</option>
-                  <option [value]="'2015'">2558</option>
-                  <option [value]="'2014'">2557</option>
-                  <option [value]="'2013'">2556</option>
-                  <option [value]="'2012'">2555</option>
-                  <option [value]="'2011'">2554</option>
-                </select>
-              </div>
+                <div class="select" *ngIf="xx == 'yearbudget'">
+                  <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)" class="form-control">
+                    <option [value]="''">---- เลือกปี พ.ศ. ----</option>
+                    <option [value]="'2021'">2564</option>
+                    <option [value]="'2020'">2563</option>
+                    <option [value]="'2019'">2562</option>
+                    <option [value]="'2018'">2561</option>
+                    <option [value]="'2017'">2560</option>
+                    <option [value]="'2016'">2559</option>
+                    <option [value]="'2015'">2558</option>
+                    <option [value]="'2014'">2557</option>
+                    <option [value]="'2013'">2556</option>
+                    <option [value]="'2012'">2555</option>
+                    <option [value]="'2011'">2554</option>
+                  </select>
+                </div>
 
-              <div class="select" *ngIf="xx == 'ed'">
-                <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)" class="form-control">
-                  <option [value]="''">---- เลือกยา----</option>
-                  <option [value]="'1'">ในบัญชี</option>
-                  <option [value]="'0'">นอกบัญชี</option>
-                </select>
+                <div class="select" *ngIf="xx == 'ed'">
+                  <select name="xx" id="xx" #input (input)="KeyParam(xx,input,idx)" class="form-control">
+                    <option [value]="''">---- เลือกยา----</option>
+                    <option [value]="'1'">ในบัญชี</option>
+                    <option [value]="'0'">นอกบัญชี</option>
+                  </select>
+                </div>
+                <div
+                  *ngIf="xx !== 'datestart' && xx !== 'dateend' && xx !== 'month' && xx !== 'yearbudget' && xx !=='ed'">
+                  <input type="text" name="xx" id="xx" size="35" value="" #input (keyup)="KeyParam(xx,input,idx)"
+                    class="form-control">
+                </div>
               </div>
-              <div
-                *ngIf="xx !== 'datestart' && xx !== 'dateend' && xx !== 'month' && xx !== 'yearbudget' && xx !=='ed'">
-                <input type="text" name="xx" id="xx" size="35" value="" #input (keyup)="KeyParam(xx,input,idx)"
-                  class="form-control">
-              </div>
-            </div>
-          </section>
+            </section>
+          </div>
+
         </form>
       </div>
       <div class="form-group ">
