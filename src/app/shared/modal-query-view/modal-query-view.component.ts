@@ -30,7 +30,7 @@ export class ModalQueryViewComponent implements OnInit {
   title_name: any;
   comment: any;
   template: any;
-
+  n = 0;
 
   constructor(
     private alertService: AlertService,
@@ -150,8 +150,7 @@ export class ModalQueryViewComponent implements OnInit {
         this.fieldDatas = [null];
         this.tableDatas = [null];
         // this.alertService.error('เกิดข้อผิดพลาด');
-        let n = 1;
-        for (n = 0; n < 1; n++) {
+        for (this.n = 0; this.n < 1; this.n++) {
           this.gitShowView()
         }
       }
@@ -161,6 +160,10 @@ export class ModalQueryViewComponent implements OnInit {
       this.fieldDatas = [null];
       this.tableDatas = [null];
       // this.alertService.error();
+      for (this.n = 0; this.n < 1; this.n++) {
+        this.gitShowView()
+      }
+
     }
 
   }
