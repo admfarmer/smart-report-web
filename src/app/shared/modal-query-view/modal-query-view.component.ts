@@ -51,21 +51,26 @@ export class ModalQueryViewComponent implements OnInit {
     this.template = info.template
     if (this.params) {
       this.param_xx = this.params.split(",");
+      if (this.param_xx == '') {
+        this.param_xx = null;
+      }
       // console.log(this.param_xx);
     } else {
       this.gitShowView();
     }
   }
   dismiss() {
+    this.sql = '';
+    this.params = ''
+    this.param_xx = ''
+    this.param_x = [];
+    this.param = [];
+    this.itemmenu = [];
+    this.items = [];
+    this.fieldDatas = [];
+    this.tableDatas = [];
     this.opened = false;
-    this.params = null
-    this.param_xx = null
-    this.param_x = [null];
-    this.param = [null];
-    this.itemmenu = [null];
-    this.items = [null];
-    this.fieldDatas = [null];
-    this.tableDatas = [null];
+    this.loading = false;
   }
 
   KeyParam(xx, input, idx) {
@@ -79,10 +84,14 @@ export class ModalQueryViewComponent implements OnInit {
   }
 
   async gitShowView() {
+
     this.loading = true;
-    let i: any;
-    let x: any;
-    let xx: any;
+
+    let i: any = null;
+    let x: any = null;
+    let xx: any = null;
+    console.log(this.param);
+
 
     for (i = 0; i < this.param.length; i++) {
       x = this.param[i].name;
@@ -90,7 +99,8 @@ export class ModalQueryViewComponent implements OnInit {
       this.param_x[i] = xx;
     }
     this.params = this.param_x;
-    // console.log(this.params);
+    console.log(this.params);
+
 
     try {
       this.itemmenu = [null];
