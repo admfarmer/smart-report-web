@@ -21,7 +21,7 @@ export class ModalQueryViewComponent implements OnInit {
   loading: boolean = false;
 
   sql: any;
-  params: any;
+  params: any = [];
   subitems: any;
   param_xx: any = '';
   param_x: any = [];
@@ -150,9 +150,6 @@ export class ModalQueryViewComponent implements OnInit {
         this.fieldDatas = [null];
         this.tableDatas = [null];
         // this.alertService.error('เกิดข้อผิดพลาด');
-        for (this.n = 0; this.n < 1; this.n++) {
-          this.gitShowView()
-        }
       }
     } catch (error) {
       console.log(error);
@@ -160,9 +157,6 @@ export class ModalQueryViewComponent implements OnInit {
       this.fieldDatas = [null];
       this.tableDatas = [null];
       // this.alertService.error();
-      for (this.n = 0; this.n < 1; this.n++) {
-        this.gitShowView()
-      }
 
     }
 
