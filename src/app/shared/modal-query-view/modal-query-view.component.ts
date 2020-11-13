@@ -60,6 +60,9 @@ export class ModalQueryViewComponent implements OnInit {
     }
   }
   dismiss() {
+    this.fieldDatas = [null];
+    this.tableDatas = [null];
+
     this.sql = '';
     this.params = ''
     this.param_xx = ''
@@ -147,6 +150,10 @@ export class ModalQueryViewComponent implements OnInit {
         this.fieldDatas = [null];
         this.tableDatas = [null];
         // this.alertService.error('เกิดข้อผิดพลาด');
+        let n = 1;
+        for (n = 0; n < 1; n++) {
+          this.gitShowView()
+        }
       }
     } catch (error) {
       console.log(error);
