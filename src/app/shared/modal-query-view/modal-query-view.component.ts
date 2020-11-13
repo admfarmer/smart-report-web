@@ -23,7 +23,7 @@ export class ModalQueryViewComponent implements OnInit {
   sql: any;
   params: any;
   subitems: any;
-  param_xx: any;
+  param_xx: any = '';
   param_x: any = [];
   param: any = [];
 
@@ -87,9 +87,9 @@ export class ModalQueryViewComponent implements OnInit {
 
     this.loading = true;
 
-    let i: any = null;
-    let x: any = null;
-    let xx: any = null;
+    let i: any;
+    let x: any;
+    let xx: any;
     console.log(this.param);
 
 
@@ -103,8 +103,8 @@ export class ModalQueryViewComponent implements OnInit {
 
 
     try {
-      this.itemmenu = [null];
-      this.items = [null];
+      // this.itemmenu = [null];
+      // this.items = [null];
 
       const rs: any = await this.queryViewService.viewReport(this.sql, this.params);
       if (rs.info) {
