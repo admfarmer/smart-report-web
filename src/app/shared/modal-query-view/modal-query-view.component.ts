@@ -144,11 +144,15 @@ export class ModalQueryViewComponent implements OnInit {
       } else {
         console.log("เกิดข้อผิดพลาด");
         this.loading = false;
+        this.fieldDatas = [null];
+        this.tableDatas = [null];
         // this.alertService.error('เกิดข้อผิดพลาด');
       }
     } catch (error) {
       console.log(error);
       this.loading = false;
+      this.fieldDatas = [null];
+      this.tableDatas = [null];
       // this.alertService.error();
     }
 
